@@ -1,6 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\{
+    DashboardController,
+    CustomerController,
+    VendorController,
+    StatusController,
+    BankController,
+    ItemController,
+    InvoiceController,
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +24,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DashboardController::class, 'index']);
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::resource([]);
+
+// Route::resources([
+//     'customer' => CustomerController::class,
+//     'vendor' => VendorController::class,
+//     'status' => StatusController::class,
+//     'bank' => BankController::class,
+//     'item' => ItemController::class,
+//     'invoice' => InvoiceController::class,
+// ]);
+// Route::resource('customers', CustomerController::class);
+// Auth::routes();
