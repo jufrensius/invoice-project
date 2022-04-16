@@ -15,11 +15,10 @@ class CreateBanksTable extends Migration
     {
         Schema::create('banks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('vendor_id');
-            $table->string('name', 75);
-            $table->char('account_number', 15);
+            $table->char('code', 3)
+                ->unique();
+            $table->string('name', 50);
             $table->timestamps();
-            $table->foreign('vendor_id')->references('id')->on('vendors');
         });
     }
 

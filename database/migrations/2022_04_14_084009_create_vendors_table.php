@@ -16,13 +16,17 @@ class CreateVendorsTable extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
             $table->string('name', 75);
-            $table->char('phone', 15)
+            $table->string('phone', 30)
                 ->unique();
             $table->string('email', 100)
                 ->unique()
                 ->nullable();
             $table->string('address');
+            $table->unsignedBigInteger('bank_id');
+            $table->string('account_number', 16)
+                ->unique();
             $table->timestamps();
+            $table->foreign('bank_id')->references('id')->on('banks');
         });
     }
 

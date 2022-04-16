@@ -26,8 +26,8 @@ class StoreVendorRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'phone' => 'required|unique:vendors|max:15',
-            'email' => 'unique:vendors|max:75',
+            'phone' => 'required|unique:vendors',
+            'email' => 'unique:vendors',
             'address' => 'required',
         ];
     }

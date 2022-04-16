@@ -12,7 +12,7 @@
 
                     <div class="card-body">
                         <div class="d-flex flex-row mb-3">
-                            <a href="{{route('customers.create')}}" class="btn btn-success">
+                            <a href="{{route('vendors.create')}}" class="btn btn-success">
                                 <i class="fa-solid fa-plus"></i>
                                 Create
                             </a>
@@ -36,10 +36,10 @@
                                     <td>{{$row->email}}</td>
                                     <td>
                                         <div class="d-flex flex-row">
-                                            <a class="p-2" href="{{route('customers.show', [$row->id])}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
+                                            <a class="p-2" href="{{route('vendors.show', [$row->id])}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Detail">
                                                 <i class="fa-solid fa-eye text-black"></i>
                                             </a>
-                                            <a class="p-2" href="{{route('customers.edit', [$row->id])}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
+                                            <a class="p-2" href="{{route('vendors.edit', [$row->id])}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit">
                                                 <i class="fa-solid fa-pencil text-primary"></i>
                                             </a>
                                             <a id="btnDelete" class="p-2" data-bs-toggle="tooltip" data-bs-placement="top" data-id="{{$row->id}}" data-name="{{$row->name}}" title="Delete">
@@ -77,7 +77,7 @@
             .then(function(e) {
                 if (e.value) {
                     $.ajax({
-                        url: '/customers/' + id,
+                        url: '/vendors/' + id,
                         type: 'post',
                         data: {
                             id: id,

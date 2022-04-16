@@ -15,9 +15,9 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $data = Customer::all();
-
-        return response()->json($data);
+        return view('pages.customer.index', [
+            'data' => Customer::orderBy('created_at', 'asc')->get(),
+        ]);
     }
 
     /**
@@ -41,6 +41,8 @@ class CustomerController extends Controller
         $validated = $request->validated();
 
         Customer::create($validated);
+
+        return redirect()->route('customers.index')->withSuccessMessage(__('global.data_store'));
     }
 
     /**
@@ -65,9 +67,9 @@ class CustomerController extends Controller
      */
     public function edit(Customer $customer)
     {
-        $customer = Customer::where('id', $customer->id);
-
-        return view('pages.customer.edit');
+        return view('pages.customer.edit', [
+            'data' => $customer,
+        ]);
     }
 
     /**
@@ -83,6 +85,8 @@ class CustomerController extends Controller
 
         Customer::where('id', $customer->id)
             ->update($validated);
+
+        return redirect()->route('customers.index')->withSuccessMessage(__('global.data_update'));
     }
 
     /**

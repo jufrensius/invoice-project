@@ -24,15 +24,15 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [DashboardController::class, 'index'])->name('home');
 
 Auth::routes();
 
 Route::resources([
-    'customer' => CustomerController::class,
-    'vendor' => VendorController::class,
-    'status' => StatusController::class,
-    'bank' => BankController::class,
-    'item' => ItemController::class,
-    'invoice' => InvoiceController::class,
+    'customers' => CustomerController::class,
+    'vendors' => VendorController::class,
+    'statuses' => StatusController::class,
+    'banks' => BankController::class,
+    'items' => ItemController::class,
+    'invoices' => InvoiceController::class,
 ]);

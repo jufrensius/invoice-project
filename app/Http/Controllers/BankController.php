@@ -15,9 +15,9 @@ class BankController extends Controller
      */
     public function index()
     {
-        $data = Bank::all();
-
-        return response()->json($data);
+        return view('pages.bank.index', [
+            'data' => Bank::orderBy('created_at', 'asc')->get(),
+        ]);
     }
 
     /**

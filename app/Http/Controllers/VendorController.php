@@ -15,9 +15,9 @@ class VendorController extends Controller
      */
     public function index()
     {
-        $data = Vendor::with('bank')->get();
-
-        return response()->json($data);
+        return view('pages.vendors.index', [
+            'data' => Vendor::with('bank')->orderBy('created_at', 'asc')->get(),
+        ]);
     }
 
     /**
@@ -27,7 +27,7 @@ class VendorController extends Controller
      */
     public function create()
     {
-        return view('pages.vendor.create');
+        return view('pages.vendors.create');
     }
 
     /**
@@ -41,6 +41,8 @@ class VendorController extends Controller
         $validated = $request->validated();
 
         Vendor::create($validated);
+
+        return redirect()->route('vendors.index')->withSuccessMessage(__('global.data_store'));
     }
 
     /**
@@ -65,10 +67,9 @@ class VendorController extends Controller
      */
     public function edit(Vendor $vendor)
     {
-        $data = Vendor::where('id', $vendor->id)
-            ->get();
-
-        return view('pages.vendor.edit');
+        return view('pages.vendors.edit', [
+            'data' => $vendor,
+        ]);
     }
 
     /**
@@ -84,6 +85,8 @@ class VendorController extends Controller
 
         Vendor::where('id', $vendor->id)
             ->update($validated);
+
+        return redirect()->route('vendors.index')->with('flash', _('flash.update'));
     }
 
     /**
@@ -95,5 +98,7 @@ class VendorController extends Controller
     public function destroy(Vendor $vendor)
     {
         Vendor::destroy($vendor->id);
+
+        return redirect()->back()->with('flash', _('flash.destroy'));
     }
 }

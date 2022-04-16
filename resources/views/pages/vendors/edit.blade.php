@@ -10,7 +10,7 @@
                         <h3 class="card-title">Create</h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('customers.update', ['customer' => $data->id])}}" method="post">
+                        <form action="{{route('vendors.update', ['vendor' => $data->id])}}" method="post">
                             @method('PUT')
                             @csrf
                             <div class="row mb-3">
@@ -53,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-row justify-content-end">
-                                <a href="{{route('customers.index')}}" class="btn btn-default mr-2">
+                                <a href="{{route('vendors.index')}}" class="btn btn-default mr-2">
                                     Cancel
                                 </a>
                                 <button type="submit" class="btn btn-primary">Update</button>
